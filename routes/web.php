@@ -6,45 +6,60 @@ use App\Http\Controllers\Guest\UmkmController;
 use App\Http\Controllers\Guest\CartController;
 use App\Http\Controllers\Guest\SellerController;
 
-/* --- HALAMAN PUBLIK --- */
+/* --- 1. HALAMAN PUBLIK --- */
 Route::get('/', function () { return view('koppee.index'); })->name('homepage');
 Route::get('/umkm-list', [UmkmController::class, 'index'])->name('guest.umkm.index');
 Route::get('/umkm/{id}', [UmkmController::class, 'show'])->name('guest.umkm.show');
 Route::get('/menu', [UmkmController::class, 'allProducts'])->name('menu');
 
-/* --- AUTH --- */
+/* --- 2. AUTHENTICATION (Login/Register) --- */
 Auth::routes();
 
-/* --- GUEST: PEMBELI (Wajib Login) --- */
+/* --- 3. FITUR PEMBELI & UMUM (Wajib Login) --- */
 Route::middleware(['auth'])->group(function () {
-    // Cart
+    
+    // KERANJANG BELANJA (Cart)
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('index');
         Route::post('/add/{id}', [CartController::class, 'add'])->name('add');
         Route::delete('/remove/{id}', [CartController::class, 'remove'])->name('remove');
         Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
     });
-    // Ulasan
+
+    // ULASAN PRODUK (Review)
     Route::post('/produk/{id}/ulasan', [UmkmController::class, 'storeUlasan'])->name('ulasan.store');
+    Route::get('/ulasan/{id}/edit', [UmkmController::class, 'editUlasan'])->name('ulasan.edit');
+    Route::put('/ulasan/{id}', [UmkmController::class, 'updateUlasan'])->name('ulasan.update');
+    Route::delete('/ulasan/{id}', [UmkmController::class, 'destroyUlasan'])->name('ulasan.destroy');
     
-    // Riwayat Pesanan
+    // RIWAYAT PESANAN
     Route::get('/riwayat-pesanan', [CartController::class, 'history'])->name('guest.orders.history');
 
-    // Daftar UMKM
+    // DAFTAR JADI PENJUAL
     Route::get('/daftar-umkm', [UmkmController::class, 'create'])->name('guest.umkm.create');
     Route::post('/daftar-umkm', [UmkmController::class, 'store'])->name('guest.umkm.store');
-});
 
-/* --- GUEST: PENJUAL (CRUD Produk) --- */
+}); 
+
+/* --- 4. FITUR PENJUAL / TOKO SAYA (My Shop) --- */
 Route::middleware(['auth'])->prefix('my-shop')->name('guest.shop.')->group(function () {
+    
+    // DASHBOARD TOKO
     Route::get('/', [SellerController::class, 'index'])->name('index');
+    
+    // KELOLA PRODUK (CRUD)
     Route::get('/product/create', [SellerController::class, 'createProduct'])->name('product.create');
     Route::post('/product/store', [SellerController::class, 'storeProduct'])->name('product.store');
-    
-    // Tambahan untuk Edit & Update
     Route::get('/product/{id}/edit', [SellerController::class, 'editProduct'])->name('product.edit');
     Route::put('/product/{id}/update', [SellerController::class, 'updateProduct'])->name('product.update');
-    
     Route::delete('/product/{id}', [SellerController::class, 'destroyProduct'])->name('product.destroy');
+
+    // EDIT PROFIL TOKO
+    // Route ini yang tadi error, sekarang sudah benar di sini:
+    Route::get('/umkm/edit', [UmkmController::class, 'edit'])->name('umkm.edit');
+    Route::put('/umkm/update', [UmkmController::class, 'update'])->name('umkm.update');
+
 });
+
+/* --- 5. REDIRECT LAINNYA --- */
 Route::redirect('/home', '/');

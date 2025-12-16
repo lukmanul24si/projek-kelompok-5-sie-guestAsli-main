@@ -36,6 +36,12 @@
                         <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $umkm->kontak) }}" target="_blank" class="btn btn-success btn-block font-weight-bold mt-3 shadow-sm">
                             <i class="fab fa-whatsapp fa-lg mr-2"></i>Chat Penjual Sekarang
                         </a>
+
+                        @if(Auth::check() && Auth::user()->id == $umkm->pemilik_warga_id)
+                            <a href="{{ route('guest.shop.umkm.edit') }}" class="btn btn-warning btn-block font-weight-bold mt-3 text-white">
+                                <i class="fa fa-edit mr-2"></i>Edit Profil Toko
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -53,7 +59,7 @@
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src="{{ $p->foto_produk ? asset('storage/'.$p->foto_produk) : asset('assets/img/menu-1.jpg') }}" 
-                                             class="card-img h-100" alt="{{ $p->nama_produk }}" style="object-fit: cover; min-height: 200px;">
+                                               class="card-img h-100" alt="{{ $p->nama_produk }}" style="object-fit: cover; min-height: 200px;">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -90,7 +96,30 @@
                                             <div class="media mb-3 p-3 bg-light rounded">
                                                 <img src="{{ asset('assets/img/user.png') }}" class="mr-3 rounded-circle" style="width: 40px; height: 40px;">
                                                 <div class="media-body">
-                                                    <h6 class="mt-0 mb-1 font-weight-bold">{{ $ulasan->user->first_name }}</h6>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h6 class="mt-0 mb-1 font-weight-bold">{{ $ulasan->user->first_name }}</h6>
+                                                        
+                                                        @if(Auth::check() && Auth::id() == $ulasan->user_id)
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-sm btn-link text-muted p-0" type="button" data-toggle="dropdown">
+                                                                    <i class="fa fa-ellipsis-v"></i>
+                                                                </button>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <a class="dropdown-item" href="{{ route('ulasan.edit', $ulasan->ulasan_id) }}">
+                                                                        <i class="fa fa-edit text-warning mr-2"></i> Edit
+                                                                    </a>
+                                                                    <form action="{{ route('ulasan.destroy', $ulasan->ulasan_id) }}" method="POST" onsubmit="return confirm('Hapus ulasan ini?')">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="dropdown-item">
+                                                                            <i class="fa fa-trash text-danger mr-2"></i> Hapus
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
                                                     <div class="text-primary small mb-1">
                                                         @for($i = 1; $i <= 5; $i++)
                                                             <i class="{{ $i <= $ulasan->rating ? 'fas' : 'far' }} fa-star"></i>
@@ -130,7 +159,7 @@
                                         @endauth
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                         </div>
                     @empty
                         <div class="col-12 text-center py-5">
