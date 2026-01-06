@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
-<<<<<<< HEAD
-   
-=======
 
->>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
+   
+
+
+
     use HasFactory, Notifiable;
 
     protected $table = 'users';
@@ -25,7 +25,7 @@ class User extends Authenticatable
         'password',
     ];
 
-<<<<<<< HEAD
+
      public function umkm()
     {
         
@@ -36,7 +36,7 @@ class User extends Authenticatable
     {
    
         return $this->umkm()->exists();
-=======
+
     // Relationship ini mungkin perlu dihapus karena UMKM sekarang dimiliki oleh Warga, bukan User
     // public function umkm()
     // {
@@ -48,7 +48,7 @@ class User extends Authenticatable
         // Method ini mungkin perlu diimplementasikan ulang
         // karena struktur hubungan telah berubah
         return false;
->>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
+
     }
 
     protected $hidden = [

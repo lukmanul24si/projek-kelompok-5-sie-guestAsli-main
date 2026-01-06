@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="font-weight-bold mb-1">{{ $p->nama_produk }}</h5>
-<<<<<<< HEAD
+
                         <p class="text-muted small mb-2">Dijual oleh: <strong>{{ $p->umkm->nama_usaha }}</strong></p>
                         
                         <form action="{{ route('cart.add', $p->produk_id) }}" method="POST">
@@ -39,9 +39,9 @@
                                 <i class="fa fa-shopping-cart mr-2"></i>Tambah ke Keranjang
                             </button>
                         </form>
-=======
+
                         <p class="text-muted small mb-0">Dijual oleh: <strong>{{ $p->umkm->nama_usaha }}</strong></p>
->>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
+
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
+
 @endsection
-=======
+
 @endsection
->>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
+

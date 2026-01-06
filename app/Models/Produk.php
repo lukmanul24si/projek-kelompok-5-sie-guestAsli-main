@@ -2,29 +2,41 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
+
+    // Nama tabel harus konsisten dengan migrasi (gunakan 'produks')
     protected $table = 'produks';
-=======
-    protected $table = 'produk';
->>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
+
     protected $primaryKey = 'produk_id';
 
     protected $fillable = [
-        'umkm_id', 'nama_produk', 'deskripsi', 'harga', 'stok', 'status', 'foto_produk'
+        'umkm_id', 
+        'nama_produk', 
+        'deskripsi', 
+        'harga', 
+        'stok', 
+        'status', 
+        'foto_produk'
     ];
 
-    //  RELASI 
+    /**
+     * RELASI: Produk dimiliki oleh satu UMKM
+     */
     public function umkm()
     {
         return $this->belongsTo(Umkm::class, 'umkm_id', 'umkm_id');
     }
-    public function ulasans() {
-    return $this->hasMany(UlasanProduk::class, 'produk_id', 'produk_id');
-}
+
+    /**
+     * RELASI: Produk memiliki banyak Ulasan
+     */
+    public function ulasans() 
+    {
+        return $this->hasMany(UlasanProduk::class, 'produk_id', 'produk_id');
+    }
 }

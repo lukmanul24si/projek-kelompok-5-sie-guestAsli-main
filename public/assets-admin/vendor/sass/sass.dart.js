@@ -97373,7 +97373,7 @@ self.readline = _cli_pkg_requires.readline;
     x2c_whici: ", which is currently (incorrectly) converted to ",
     x2c_whicw: ', which will likely produce invalid CSS.\nAlways quote color names when using them as strings or map keys (for example, "',
     x2e_Rela: ".\nRelative canonical URLs are deprecated and will eventually be disallowed.\n",
-    x3d_____: "===== asynchronous gap ===========================\n",
+    x3d_____: "===== asynchronous gap ======\n",
     x40_moz_: "@-moz-document is deprecated and support will be removed in Dart Sass 2.0.0.\n\nFor details, see http://bit.ly/MozDocument.",
     x40conte: "@content is only allowed within mixin declarations.",
     x40elsei: "@elseif is deprecated and will not be supported in future Sass versions.\n\nRecommendation: @else if",
