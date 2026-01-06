@@ -11,6 +11,7 @@
         </div>
     </div>
 </div>
+
 <div class="container-fluid pt-5">
     <div class="container">
         <div class="section-title">
@@ -23,14 +24,13 @@
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card border-0 shadow-sm">
                     <div class="position-relative">
-                        <img class="card-img-top" src="{{ $p->foto_produk ? asset('storage/'.$p->foto_produk) : asset('assets/img/menu-1.jpg') }}" alt="" style="height: 200px; object-fit: cover;">
+                        <img class="card-img-top" src="{{ $p->foto_produk ? asset('storage/'.$p->foto_produk) : asset('assets/img/menu-1.jpg') }}" alt="{{ $p->nama_produk }}" style="height: 200px; object-fit: cover;">
                         <div class="position-absolute bg-primary text-white py-1 px-3" style="top: 0; right: 0;">
                             Rp {{ number_format($p->harga, 0, ',', '.') }}
                         </div>
                     </div>
                     <div class="card-body text-center">
                         <h5 class="font-weight-bold mb-1">{{ $p->nama_produk }}</h5>
-
                         <p class="text-muted small mb-2">Dijual oleh: <strong>{{ $p->umkm->nama_usaha }}</strong></p>
                         
                         <form action="{{ route('cart.add', $p->produk_id) }}" method="POST">
@@ -39,9 +39,6 @@
                                 <i class="fa fa-shopping-cart mr-2"></i>Tambah ke Keranjang
                             </button>
                         </form>
-
-                        <p class="text-muted small mb-0">Dijual oleh: <strong>{{ $p->umkm->nama_usaha }}</strong></p>
-
                     </div>
                 </div>
             </div>
@@ -54,8 +51,4 @@
         </div>
     </div>
 </div>
-
 @endsection
-
-@endsection
-
