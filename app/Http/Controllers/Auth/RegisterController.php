@@ -41,13 +41,14 @@ class RegisterController extends Controller
      * Membuat user baru di database.
      */
     protected function create(array $data)
-    {
-        return User::create([
-            'first_name' => $data['first_name'], // Diubah dari 'name'
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+{
+    return User::create([
+        'first_name' => $data['first_name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'role' => 'user', // Tambahkan baris ini untuk memberikan nilai default
+    ]);
+}
 
     /**
      * Logika setelah user berhasil terdaftar.
