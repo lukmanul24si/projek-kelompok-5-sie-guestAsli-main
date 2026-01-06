@@ -17,12 +17,20 @@
             <div class="col-lg-4 mb-5">
                 <div class="bg-light p-5 shadow-sm rounded border-top border-primary" style="border-width: 5px !important;">
                     <div class="text-center mb-4">
+<<<<<<< HEAD
                         <img src="{{ $umkm->logo ? asset('storage/'.$umkm->logo) : asset('assets/img/about.png') }}" 
+=======
+                        <img src="{{ $umkm->logo ? asset('storage/'.$umkm->logo) : asset('assets/img/about.png') }}"
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                              class="img-fluid rounded-circle shadow-sm border" style="width: 150px; height: 150px; object-fit: cover;">
                     </div>
                     <h3 class="font-weight-bold text-center mb-4">{{ $umkm->nama_usaha }}</h3>
                     <hr>
+<<<<<<< HEAD
                     
+=======
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                     <div class="mb-4">
                         <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 2px;">Informasi Toko</h5>
                         <p><i class="fa fa-tag text-primary mr-3"></i><strong>Kategori:</strong><br><span class="ml-4">{{ $umkm->kategori }}</span></p>
@@ -58,7 +66,11 @@
                             <div class="card border-0 shadow-sm overflow-hidden">
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
+<<<<<<< HEAD
                                         <img src="{{ $p->foto_produk ? asset('storage/'.$p->foto_produk) : asset('assets/img/menu-1.jpg') }}" 
+=======
+                                        <img src="{{ $p->foto_produk ? asset('storage/'.$p->foto_produk) : asset('assets/img/menu-1.jpg') }}"
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                                class="card-img h-100" alt="{{ $p->nama_produk }}" style="object-fit: cover; min-height: 200px;">
                                     </div>
                                     <div class="col-md-8">
@@ -68,11 +80,16 @@
                                                 <h5 class="text-primary font-weight-bold">Rp {{ number_format($p->harga, 0, ',', '.') }}</h5>
                                             </div>
                                             <p class="text-muted small">{{ $p->deskripsi }}</p>
+<<<<<<< HEAD
                                             <p class="small mb-3">
+=======
+                                            <p class="small mb-0">
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                                 <span class="badge badge-{{ $p->stok > 0 ? 'success' : 'danger' }} px-3 py-2">
                                                     Stok: {{ $p->stok }}
                                                 </span>
                                             </p>
+<<<<<<< HEAD
                                             
                                             @if($p->stok > 0)
                                                 <form action="{{ route('cart.add', $p->produk_id) }}" method="POST">
@@ -82,6 +99,8 @@
                                                     </button>
                                                 </form>
                                             @endif
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                         </div>
                                     </div>
                                 </div>
@@ -97,9 +116,21 @@
                                                 <img src="{{ asset('assets/img/user.png') }}" class="mr-3 rounded-circle" style="width: 40px; height: 40px;">
                                                 <div class="media-body">
                                                     <div class="d-flex justify-content-between align-items-center">
+<<<<<<< HEAD
                                                         <h6 class="mt-0 mb-1 font-weight-bold">{{ $ulasan->user->first_name }}</h6>
                                                         
                                                         @if(Auth::check() && Auth::id() == $ulasan->user_id)
+=======
+                                                        <h6 class="mt-0 mb-1 font-weight-bold">{{ optional($ulasan->warga)->nama }}</h6>
+
+                                                        @php
+                                                            $currentWarga = null;
+                                                            if(Auth::check()) {
+                                                                $currentWarga = \App\Models\Warga::where('email', Auth::user()->email)->first();
+                                                            }
+                                                        @endphp
+                                                        @if($currentWarga && $currentWarga->warga_id === $ulasan->warga_id)
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                                             <div class="dropdown">
                                                                 <button class="btn btn-sm btn-link text-muted p-0" type="button" data-toggle="dropdown">
                                                                     <i class="fa fa-ellipsis-v"></i>
@@ -134,6 +165,14 @@
                                         @auth
                                             <div class="border-top pt-3 mt-3">
                                                 <h6 class="font-weight-bold mb-3">Tulis Ulasan Anda</h6>
+<<<<<<< HEAD
+=======
+                                                @if(session('success'))
+                                                    <div class="alert alert-success py-2 px-3 mb-3">
+                                                        {{ session('success') }}
+                                                    </div>
+                                                @endif
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                                 <form action="{{ route('ulasan.store', $p->produk_id) }}" method="POST">
                                                     @csrf
                                                     <div class="form-row">
@@ -172,4 +211,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

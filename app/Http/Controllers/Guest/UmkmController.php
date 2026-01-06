@@ -6,9 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Umkm;
 use App\Models\Produk;
 use App\Models\UlasanProduk;
+<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; // Tambahkan ini untuk hapus foto
+=======
+use App\Models\Warga;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage; // Tambahkan ini untuk hapus foto
+use Illuminate\Support\Str;
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 
 class UmkmController extends Controller
 {
@@ -22,13 +30,21 @@ class UmkmController extends Controller
 
     public function show($id)
     {
+<<<<<<< HEAD
         $umkm = Umkm::with('produks.ulasans.user')->findOrFail($id);
+=======
+        $umkm = Umkm::with('produks.ulasans.warga')->findOrFail($id);
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         return view('guest.umkm.show', compact('umkm'));
     }
 
     public function allProducts()
     {
+<<<<<<< HEAD
         $produks = Produk::with('umkm')->where('status', 'tersedia')->get();
+=======
+        $produks = Produk::with('umkm')->where('status', 'aktif')->get();
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         return view('guest.produk.all', compact('produks'));
     }
 
@@ -62,7 +78,11 @@ class UmkmController extends Controller
         $umkm->rw = $request->rw;
         $umkm->deskripsi = $request->deskripsi;
         $umkm->kontak = $request->kontak;
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         if ($request->hasFile('logo')) {
             $path = $request->file('logo')->store('logos', 'public');
             $umkm->logo = $path;
@@ -125,9 +145,25 @@ class UmkmController extends Controller
             'komentar' => 'required|string|min:5|max:1000',
         ]);
 
+<<<<<<< HEAD
         UlasanProduk::create([
             'produk_id' => $id,
             'user_id'   => Auth::id(),
+=======
+        $warga = Warga::firstOrCreate(
+            ['email' => Auth::user()->email],
+            [
+                'no_ktp'        => Str::padLeft((string) Auth::id(), 16, '0'),
+                'nama'          => Auth::user()->first_name,
+                'jenis_kelamin' => 'Laki-laki',
+                'agama'         => 'Islam',
+            ]
+        );
+
+        UlasanProduk::create([
+            'produk_id' => $id,
+            'warga_id'  => $warga->warga_id,
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
             'rating'    => $request->rating,
             'komentar'  => $request->komentar,
         ]);
@@ -139,7 +175,21 @@ class UmkmController extends Controller
     {
         $ulasan = UlasanProduk::with('produk')->findOrFail($id);
 
+<<<<<<< HEAD
         if ($ulasan->user_id != Auth::id()) {
+=======
+        $warga = Warga::firstOrCreate(
+            ['email' => Auth::user()->email],
+            [
+                'no_ktp'        => Str::padLeft((string) Auth::id(), 16, '0'),
+                'nama'          => Auth::user()->first_name,
+                'jenis_kelamin' => 'Laki-laki',
+                'agama'         => 'Islam',
+            ]
+        );
+
+        if ($ulasan->warga_id != $warga->warga_id) {
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
             return redirect()->back()->with('error', 'Akses ditolak.');
         }
 
@@ -155,7 +205,21 @@ class UmkmController extends Controller
 
         $ulasan = UlasanProduk::findOrFail($id);
 
+<<<<<<< HEAD
         if ($ulasan->user_id != Auth::id()) {
+=======
+        $warga = Warga::firstOrCreate(
+            ['email' => Auth::user()->email],
+            [
+                'no_ktp'        => Str::padLeft((string) Auth::id(), 16, '0'),
+                'nama'          => Auth::user()->first_name,
+                'jenis_kelamin' => 'Laki-laki',
+                'agama'         => 'Islam',
+            ]
+        );
+
+        if ($ulasan->warga_id != $warga->warga_id) {
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
             abort(403);
         }
 
@@ -172,7 +236,21 @@ class UmkmController extends Controller
     {
         $ulasan = UlasanProduk::findOrFail($id);
 
+<<<<<<< HEAD
         if ($ulasan->user_id != Auth::id()) {
+=======
+        $warga = Warga::firstOrCreate(
+            ['email' => Auth::user()->email],
+            [
+                'no_ktp'        => Str::padLeft((string) Auth::id(), 16, '0'),
+                'nama'          => Auth::user()->first_name,
+                'jenis_kelamin' => 'Laki-laki',
+                'agama'         => 'Islam',
+            ]
+        );
+
+        if ($ulasan->warga_id != $warga->warga_id) {
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
             abort(403);
         }
 
@@ -180,4 +258,8 @@ class UmkmController extends Controller
 
         return redirect()->back()->with('success', 'Ulasan berhasil dihapus.');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

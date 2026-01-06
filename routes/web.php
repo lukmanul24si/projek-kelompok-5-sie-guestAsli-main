@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Guest\UmkmController;
 use App\Http\Controllers\Guest\CartController;
 use App\Http\Controllers\Guest\SellerController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Admin\UlasanProdukController as AdminUlasanProdukController;
+use App\Models\Produk;
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 
 /* --- 1. HALAMAN PUBLIK --- */
 Route::get('/', function () { return view('koppee.index'); })->name('homepage');
@@ -18,6 +23,7 @@ Auth::routes();
 /* --- 3. FITUR PEMBELI & UMUM (Wajib Login) --- */
 Route::middleware(['auth'])->group(function () {
     
+<<<<<<< HEAD
     // KERANJANG BELANJA (Cart)
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('/', [CartController::class, 'index'])->name('index');
@@ -27,10 +33,21 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // ULASAN PRODUK (Review)
+=======
+    // KERANJANG BELANJA dinonaktifkan
+
+    // ULASAN PRODUK (Review)
+    Route::get('/produk/{id}/ulasan', function ($id) {
+        $produk = Produk::with('umkm')->findOrFail($id);
+        return redirect()->route('guest.umkm.show', $produk->umkm_id);
+    })->name('ulasan.show.redirect');
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
     Route::post('/produk/{id}/ulasan', [UmkmController::class, 'storeUlasan'])->name('ulasan.store');
     Route::get('/ulasan/{id}/edit', [UmkmController::class, 'editUlasan'])->name('ulasan.edit');
     Route::put('/ulasan/{id}', [UmkmController::class, 'updateUlasan'])->name('ulasan.update');
     Route::delete('/ulasan/{id}', [UmkmController::class, 'destroyUlasan'])->name('ulasan.destroy');
+<<<<<<< HEAD
     
     // RIWAYAT PESANAN
     Route::get('/riwayat-pesanan', [CartController::class, 'history'])->name('guest.orders.history');
@@ -41,6 +58,15 @@ Route::middleware(['auth'])->group(function () {
 
 }); 
 
+=======
+
+}); 
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/ulasan-produk', [AdminUlasanProdukController::class, 'index'])->name('admin.ulasan.index');
+});
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 /* --- 4. FITUR PENJUAL / TOKO SAYA (My Shop) --- */
 Route::middleware(['auth'])->prefix('my-shop')->name('guest.shop.')->group(function () {
     
@@ -62,4 +88,8 @@ Route::middleware(['auth'])->prefix('my-shop')->name('guest.shop.')->group(funct
 });
 
 /* --- 5. REDIRECT LAINNYA --- */
+<<<<<<< HEAD
 Route::redirect('/home', '/');
+=======
+Route::redirect('/home', '/');
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

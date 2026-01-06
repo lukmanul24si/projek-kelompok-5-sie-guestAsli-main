@@ -16,9 +16,16 @@ return new class extends Migration
         $table->string('first_name', 100);
         $table->string('last_name', 100);
         $table->date('birthday')->nullable();
+<<<<<<< HEAD
         $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
         $table->string('email')->unique();
         $table->string('phone', 20)->nullable();
+=======
+        $table->string('gender', 20)->nullable();
+        $table->string('email')->unique();
+        $table->string('phone', 20)->nullable();
+        $table->json('files')->nullable();
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         $table->timestamps();
     });
 }

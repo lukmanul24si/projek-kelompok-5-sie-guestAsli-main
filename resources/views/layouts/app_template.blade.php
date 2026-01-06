@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <title>Etalase UMKM - Berdayakan Produk Lokal</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
     <link href="{{ asset('assets/img/favicon.ico') }}" rel="icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -34,28 +38,37 @@
                     <a href="{{ url('/') }}" class="nav-item nav-link">Beranda</a>
                     <a href="{{ route('guest.umkm.index') }}" class="nav-item nav-link">Daftar UMKM</a>
                     <a href="{{ route('menu') }}" class="nav-item nav-link">Produk</a>
+<<<<<<< HEAD
                     
                     <a href="{{ route('cart.index') }}" class="nav-item nav-link">
                         <i class="fa fa-shopping-cart text-primary"></i> 
                         <span class="badge badge-primary">{{ count((array) session('cart')) }}</span>
                     </a>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 
                     @auth
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Akun Saya</a>
                             <div class="dropdown-menu text-capitalize">
+<<<<<<< HEAD
                                 <a href="{{ route('guest.orders.history') }}" class="dropdown-item">
                                     <i class="fa fa-history mr-2 text-primary"></i> Pesanan Saya
                                 </a>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                 <div class="dropdown-divider"></div>
                                 @if(Auth::user()->isSeller())
                                     <a href="{{ url('/my-shop') }}" class="dropdown-item">
                                         <i class="fa fa-store mr-2 text-primary"></i> Kelola Toko
                                     </a>
+<<<<<<< HEAD
                                 @else
                                     <a href="{{ url('/daftar-umkm') }}" class="dropdown-item">
                                         <i class="fa fa-plus-circle mr-2 text-primary"></i> Daftarkan UMKM
                                     </a>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                 @endif
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
@@ -85,7 +98,11 @@
             </div>
         @endif
     </div>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
     @yield('content')
 
     <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
@@ -125,7 +142,10 @@
 
     <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
         <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="{{ url('/') }}">BogengStore</a>. All Rights Reserved.</p>
+<<<<<<< HEAD
         <p class="m-0 text-white">Designed by <a class="font-weight-bold" href="https://htmlcodex.com">HTML Codex</a> Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
     </div>
 </div>
 
@@ -137,4 +157,8 @@
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

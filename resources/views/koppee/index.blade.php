@@ -35,11 +35,14 @@
                     <a href="{{ url('/') }}" class="nav-item nav-link active">Beranda</a>
                     <a href="{{ url('/umkm-list') }}" class="nav-item nav-link">Daftar UMKM</a>
                     <a href="{{ url('/menu') }}" class="nav-item nav-link">Produk</a>
+<<<<<<< HEAD
                     
                     <a href="{{ url('/cart') }}" class="nav-item nav-link">
                         <i class="fa fa-shopping-cart text-primary"></i> 
                         <span class="badge badge-primary">{{ count((array) session('cart')) }}</span>
                     </a>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 
                     @auth
                         <div class="nav-item dropdown">
@@ -47,10 +50,14 @@
                             <div class="dropdown-menu text-capitalize">
                                 @if(Auth::user()->isSeller())
                                     <a href="{{ url('/my-shop') }}" class="dropdown-item">Kelola Toko (CRUD Produk)</a>
+<<<<<<< HEAD
                                 @else
                                     <a href="{{ url('/daftar-umkm') }}" class="dropdown-item">Daftarkan UMKM Anda</a>
                                 @endif
                                 <a href="{{ url('/riwayat-pesanan') }}" class="dropdown-item">Pesanan Saya</a>
+=======
+                                @endif
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                     @csrf
@@ -206,4 +213,8 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

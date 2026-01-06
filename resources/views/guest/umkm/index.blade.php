@@ -16,6 +16,7 @@
         <div class="section-title text-center">
             <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mitra UMKM</h4>
             <h1 class="display-4">Unit Usaha Wilayah Kami</h1>
+<<<<<<< HEAD
             
             <div class="mt-4">
                 @auth
@@ -37,6 +38,8 @@
                     </a>
                 @endauth
             </div>
+=======
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         </div>
 
         <div class="row mt-5">
@@ -61,4 +64,8 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)

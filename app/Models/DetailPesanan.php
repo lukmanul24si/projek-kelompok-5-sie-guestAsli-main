@@ -10,7 +10,11 @@ class DetailPesanan extends Model
     use HasFactory;
 
     // Nama tabel di database
+<<<<<<< HEAD
     protected $table = 'detail_pesanans';
+=======
+    protected $table = 'detail_pesanan';
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
 
     // Nama Primary Key
     protected $primaryKey = 'detail_id';
@@ -19,7 +23,12 @@ class DetailPesanan extends Model
     protected $fillable = [
         'pesanan_id',
         'produk_id',
+<<<<<<< HEAD
         'jumlah',
+=======
+        'qty',
+        'harga_satuan',
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
         'subtotal'
     ];
 

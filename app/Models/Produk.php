@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Produk extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
     protected $table = 'produks';
+=======
+    protected $table = 'produk';
+>>>>>>> 3acb0d8 (Menghubungkan projek lokal ke github)
     protected $primaryKey = 'produk_id';
 
     protected $fillable = [
