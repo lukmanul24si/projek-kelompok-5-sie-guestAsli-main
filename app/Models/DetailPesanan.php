@@ -9,26 +9,18 @@ class DetailPesanan extends Model
 {
     use HasFactory;
 
-    // Nama tabel di database
-
+    // Nama tabel disesuaikan dengan migrasi yang baru saja sukses
     protected $table = 'detail_pesanans';
-
-    protected $table = 'detail_pesanan';
-
 
     // Nama Primary Key
     protected $primaryKey = 'detail_id';
 
-    // Kolom yang boleh diisi manual
+    // Kolom yang boleh diisi manual (menggunakan 'jumlah' sesuai migrasi terakhir)
     protected $fillable = [
         'pesanan_id',
         'produk_id',
-
         'jumlah',
-
-        'qty',
         'harga_satuan',
-
         'subtotal'
     ];
 
